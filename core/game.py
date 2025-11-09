@@ -1,14 +1,17 @@
 import pygame
 
 from core import settings
+from entities.player import Player
 
 class Game:
     def __init__(self):
         pygame.init()
-        screen = pygame.display.set_mode((settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT))
+        self.screen = pygame.display.set_mode((settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
         self.running = True
         self.init_window()
+
+        self.player = Player(0, 0)
 
     def init_window(self):
         pygame.display.set_caption(settings.TITLE)
@@ -32,4 +35,6 @@ class Game:
         pass
 
     def render(self):
-        pass
+        self.screen.fill((0,0,0))
+        self.player.draw(self.screen)
+        pygame.display.flip()
