@@ -10,9 +10,9 @@ class Player:
         self.speed = 3
         self.sprite = pygame.image.load(self.sprite_path).convert_alpha()
 
-    def move(self, dx, dy):
-        new_x = self.x + dx
-        new_y = self.y + dy
+    def move(self, dx: int, dy: int):
+        self.x += dx * self.speed
+        self.y += dy * self.speed
 
     def draw(self, screen):
         screen.blit(self.sprite, (self.x, self.y))
