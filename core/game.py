@@ -11,7 +11,10 @@ class Game:
         self.running = True
         self.init_window()
 
-        self.player = Player(0, 0)
+        sprite_w, sprite_h = Player.get_sprite_size()
+        center_x = settings.SCREEN_WIDTH / 2 - sprite_w / 2
+        center_y = settings.SCREEN_HEIGHT / 2 - sprite_h / 2
+        self.player = Player(center_x , center_y)
 
     def init_window(self):
         pygame.display.set_caption(settings.TITLE)
@@ -35,6 +38,6 @@ class Game:
         pass
 
     def render(self):
-        self.screen.fill((0,0,0))
+        self.screen.fill((128,128,128))
         self.player.draw(self.screen)
         pygame.display.flip()
